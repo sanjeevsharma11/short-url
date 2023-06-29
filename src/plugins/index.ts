@@ -1,8 +1,7 @@
 import type { FastifyInstance } from 'fastify';
 import cors from '@fastify/cors';
 import helmet from '@fastify/helmet';
-import swagger from 'fastify-swagger';
-import { DEV_ORIGINS, IS_PROD, PROD_ORIGINS } from '../constants';
+import { IS_PROD, PROD_ORIGINS } from '../constants';
 
 const plugins = (server: FastifyInstance) => {
 	server.register(cors, {

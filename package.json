@@ -16,11 +16,14 @@
     "dotenv": "^16.3.1",
     "fastify": "^4.18.0",
     "fastify-swagger": "^5.2.0",
-    "pino": "^8.14.1"
+    "mongoose": "^7.3.1",
+    "pino": "^8.14.1",
+    "ua-parser-js": "^1.0.35"
   },
   "devDependencies": {
     "@types/config": "^3.3.0",
     "@types/node": "^20.3.2",
+    "@types/ua-parser-js": "^0.7.36",
     "ts-node-dev": "^2.0.0"
   }
 }
