@@ -10,7 +10,7 @@ const routes = (server: FastifyInstance) => {
 
 	server.route({
 		method: 'GET',
-		url: '/:uniqueIdenfier',
+		url: '/api/:expertusername/:uniquehash',
 		handler: redirectUserToOriginalUrl,
 	});
 };

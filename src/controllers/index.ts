@@ -2,18 +2,21 @@ import ShortUrl from '../model/shorturl.model';
 import ShortURLAnalytics from '../model/shorturl.analytics.model';
 import { FastifyRequest, FastifyReply } from 'fastify';
 import uaParser from 'ua-parser-js';
+import { PROD_ORIGINS } from '../constants';
 
 export const redirectUserToOriginalUrl = async (
-	request: FastifyRequest,
+	request: FastifyRequest<{
+		Params: {
+			expertusername: string;
+			uniquehash: string;
+		};
+	}>,
 	reply: FastifyReply,
 ) => {
-	const { ip, headers, url } = request;
+	const { ip, headers } = request;
+	const { expertusername, uniquehash } = request.params;
 
-	const scheme = headers['x-forwarded-proto'] || 'http';
-	const host = headers.host;
-	const path = url;
-
-	const shortUrl = `${scheme}://${host}${path}`;
+	const shortUrl = `${PROD_ORIGINS}/${expertusername}/${uniquehash}`;
 
 	try {
 		const shortUrlExits = await ShortUrl.findOne({
